@@ -1,1 +1,3 @@
-0001 27 2 James Cheras_Kuala Lumpur 0123456789 3.99 N 16.80
+0001:27;2[James+Cheras_Kuala_Lumpur=0123456789]3.99(N)16.80
+0002:34;3[Andrew+Damansara_Kuala_Lumpur=0161245321]5.88(N)20.10
+0003:42;4[Charlie+Selangor_Kuala_Lumpur=0173541523]2.50(N)11.90
