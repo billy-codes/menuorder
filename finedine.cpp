@@ -1,25 +1,24 @@
 #include <iostream>
 #include <fstream>
 #include <string>
-#include <cstdio>
 using namespace std;
 
 struct Order {
-    int orderNo;
-    int itemCode;
-    int quantity;
+    string orderNo;
+    string itemCode;
+    string quantity;
     string rName;           // recipient name
     string rAddress;        // recipient address
     string rTel;            // recipient telephone no.
-    double dCharges;        // delivery charges
+    string dCharges;        // delivery charges
 };
-
 struct Menu {
-    int itemCode;
+    string itemCode;
     string itemType;
-    int itemCost;
+    string itemCost;
 };
-struct Menu itemss[100];
+struct Menu items[100];
+struct Order orders[100];
 
 int lines(string txtFile){  // number of text-file lines
     ifstream textFile;
@@ -34,47 +33,27 @@ int lines(string txtFile){  // number of text-file lines
     }
 }
 
-// void read_file(){ // read user.txt file
-//     string iType;
-//     int iCode, iCost;
-//     FILE *fp;
-//     fp = fopen("menu.txt","r");
-
-//     int j = 0;
-//     rewind(fp);
-//     while(fscanf(fp, "%d %s %d", &iCode, iType, &iCost) != EOF){
-//         // fscanf(fp, "%d %s %d", &iCode, iType, &iCost);
-//         itemss[j].itemCode = iCode;
-//         itemss[j].itemType = iType;
-//         itemss[j].itemCost = iCost;
-//         cout << itemss[j].itemCode << itemss[j].itemType << itemss[j].itemCost << endl;
-//         j++;
-//     }
-//     fclose(fp);
-// }
-string arr[100];
 void menu_file(){
     ifstream readFile;
-    string line;
     readFile.open("menu.txt", ios::in);
-    int j = 0;
-    int i = 0;
     if(readFile.is_open()){
-        while(getline(readFile, line, ' ')){
-            arr[i] = line;
+        int i = 0;
+        while(readFile){
+            getline(readFile, items[i].itemCode, ':');
+            getline(readFile, items[i].itemType, ';');
+            getline(readFile, items[i].itemCost);
             i++;
         }
-        j++; 
     }
     readFile.close();
     
 }
 int main(){
-    // cout << lines("menu.txt");
     menu_file();
-    cout << arr[1];
-    // cout << itemss[0].itemCode << " : " << itemss[0].itemType;
-    // cout << "Trest";
+    for(int xx = 0; xx < lines("menu.txt"); xx++){
+        cout << items[xx].itemCode << " : " << items[xx].itemType << items[xx].itemCost << endl;
+    }
+
 
 
     return 0;
